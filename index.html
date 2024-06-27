@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confess Now</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Confess Now</h1>
+    </header>
+    <main>
+        <section class="form-section">
+            <form id="confessionForm">
+                <label for="to">To:</label>
+                <input type="text" id="to" name="to" required>
+
+                <label for="confession">Confession:</label>
+                <textarea id="confession" name="confession" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <section class="confessions-section" id="confessionsSection">
+            <h2>Latest Confessions</h2>
+            <div id="confessionsContainer"></div>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>
