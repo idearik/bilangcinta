@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffe6e6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ffb3b3;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.form-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-section input, .form-section textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.form-section button {
+    padding: 10px;
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-section button:hover {
+    background-color: #ff4d4d;
+}
+
+.confessions-section {
+    width: 100%;
+    max-width: 600px;
+}
+
+.confessions-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.confession-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.confession-card p {
+    margin: 0;
+}
+
+.confession-card .confession-date {
+    margin-top: 10px;
+    font-size: 0.8em;
+    color: #777;
+}

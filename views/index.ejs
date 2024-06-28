@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilang Cinta</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Bilang Cinta</h1>
+    </header>
+    <main>
+        <section class="form-section">
+            <form id="confessionForm" action="/confess" method="POST">
+                <label for="to">To:</label>
+                <input type="text" id="to" name="to" required>
+
+                <label for="confession">Confession:</label>
+                <textarea id="confession" name="confession" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+            <input type="text" id="searchBar" placeholder="Search confessions...">
+        </section>
+        <section class="confessions-section" id="confessionsSection">
+            <h2>Latest Confessions</h2>
+            <div id="confessionsContainer"></div>
+        </section>
+    </main>
+    <script src="/scripts.js"></script>
+</body>
+</html>
