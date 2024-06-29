@@ -15,6 +15,12 @@ const db = new sqlite3.Database(dbPath, (err) => {
     }
 });
 
+const badWords = [
+    "anjing", "babi", "bangsat", "bajingan", "brengsek", "kampret", 
+    "kontol", "memek", "ngentot", "perek", "setan", "tolol", "asu", 
+    "jancuk", "pepek"
+];
+
 // Set up database
 db.serialize(() => {
     console.log("Initializing database...");
@@ -43,14 +49,29 @@ app.post('/confess', (req, res) => {
     console.log("Received confession form submission:", req.body);
     const { to, confession } = req.body;
     const date = new Date().toLocaleDateString();
-    db.run("INSERT INTO confessions (toWhom, confession, date) VALUES (?, ?, ?)", [to, confession, date], (err) => {
-        if (err) {
-            console.error("Error inserting confession:", err.message);
-            return res.status(500).send("Internal Server Error");
+
+    const toLower = to.toLowerCase();
+    const confessionLower = confession.toLowerCase();
+    let containsBadWord = false;
+
+    badWords.forEach(word => {
+        if (toLower.includes(word) || confessionLower.includes(word)) {
+            containsBadWord = true;
         }
-        console.log("Confession added successfully.");
-        res.redirect('/');
     });
+
+    if (containsBadWord) {
+        res.status(400).send("Your confession contains inappropriate language. Please remove the bad words.");
+    } else {
+        db.run("INSERT INTO confessions (toWhom, confession, date) VALUES (?, ?, ?)", [to, confession, date], (err) => {
+            if (err) {
+                console.error("Error inserting confession:", err.message);
+                return res.status(500).send("Internal Server Error");
+            }
+            console.log("Confession added successfully.");
+            res.redirect('/');
+        });
+    }
 });
 
 // Fetch all confessions

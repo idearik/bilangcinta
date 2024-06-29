@@ -1,8 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetchConfessions();
+    const badWords = [
+        "anjing", "babi", "bangsat", "bajingan", "brengsek", "kampret", 
+        "kontol", "memek", "ngentot", "perek", "setan", "tolol", "asu", 
+        "jancuk", "pepek"
+    ];
 
-    document.getElementById("search-bar").addEventListener("input", function (e) {
-        searchConfessions(e.target.value);
+    const form = document.querySelector('form');
+    const toInput = document.getElementById('to');
+    const confessionInput = document.getElementById('confession');
+    const errorMessage = document.createElement('div');
+    errorMessage.style.color = 'red';
+    form.insertBefore(errorMessage, form.firstChild);
+
+    form.addEventListener('submit', function (e) {
+        const to = toInput.value.toLowerCase();
+        const confession = confessionInput.value.toLowerCase();
+        let containsBadWord = false;
+
+        badWords.forEach(word => {
+            if (to.includes(word) || confession.includes(word)) {
+                containsBadWord = true;
+            }
+        });
+
+        if (containsBadWord) {
+            e.preventDefault();
+            errorMessage.textContent = "Your confession contains inappropriate language. Please remove the bad words.";
+        } else {
+            errorMessage.textContent = '';
+        }
     });
 });
 
