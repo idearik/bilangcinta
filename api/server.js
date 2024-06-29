@@ -87,6 +87,18 @@ app.post('/upvote', (req, res) => {
     });
 });
 
+// Handle unvote
+app.post('/unvote', (req, res) => {
+    const { id } = req.body;
+    db.run("UPDATE confessions SET upvotes = upvotes - 1 WHERE id = ?", [id], function(err) {
+        if (err) {
+            console.error("Error updating unvote:", err.message);
+            return res.status(500).send("Internal Server Error");
+        }
+        res.send("Unvote successful");
+    });
+});
+
 // Fetch all confessions
 app.get('/confessions', (req, res) => {
     console.log("Fetching all confessions.");

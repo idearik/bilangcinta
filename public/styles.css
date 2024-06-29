@@ -1,9 +1,9 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
-    color: #343a40;
     margin: 0;
     padding: 20px;
+    color: #333;
 }
 
 h1 {
@@ -12,29 +12,27 @@ h1 {
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     max-width: 600px;
-    margin: 0 auto 20px auto;
+    margin: 0 auto;
+    background: #fff;
     padding: 20px;
     border-radius: 8px;
-    background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
-label, input[type="submit"] {
-    width: 100%;
-    margin-bottom: 10px;
+label {
+    display: block;
+    margin: 10px 0 5px;
 }
 
-input[type="text"], textarea {
+input[type="text"],
+textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ced4da;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    margin-bottom: 20px;
-    font-size: 16px;
 }
 
 input[type="submit"] {
@@ -85,6 +83,16 @@ input[type="submit"]:hover {
     color: #ff6b6b;
 }
 
+.card p {
+    max-height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card.expanded p {
+    max-height: none;
+}
+
 .love-button {
     background-color: transparent;
     border: none;
@@ -103,4 +111,21 @@ input[type="submit"]:hover {
 .love-button span {
     margin-left: 5px;
     font-size: 18px;
+}
+
+.read-more-button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 4px;
+    margin-top: 10px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.read-more-button:hover {
+    background-color: #ff4757;
 }
