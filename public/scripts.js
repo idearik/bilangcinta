@@ -64,7 +64,9 @@ function displayConfessions(confessions) {
             <h3>To: ${confession.toWhom}</h3>
             <p>${confession.confession}</p>
             <small>${confession.date}</small>
-            <button onclick="upvote(${confession.id})">❤️ ${confession.upvotes}</button>
+            <button class="love-button" onclick="upvote(${confession.id})">
+                &#10084; <span>${confession.upvotes}</span>
+            </button>
         `;
         confessionsContainer.appendChild(card);
     });

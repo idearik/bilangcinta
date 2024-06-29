@@ -20,13 +20,7 @@
     <input type="text" id="search-bar" placeholder="Search confessions..." oninput="searchConfessions(this.value)">
 
     <div id="confessions">
-        <% confessions.forEach(function(confession) { %>
-            <div class="card">
-                <h3>To: <%= confession.toWhom %></h3>
-                <p><%= confession.confession %></p>
-                <small><%= confession.date %></small>
-            </div>
-        <% }); %>
+        <!-- Confessions will be dynamically inserted here by JavaScript -->
     </div>
 
     <script src="/scripts.js"></script>
