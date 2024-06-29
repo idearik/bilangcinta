@@ -30,6 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
             errorMessage.textContent = '';
         }
     });
+
+    fetchConfessions();
+
+    document.getElementById("search-bar").addEventListener("input", function (e) {
+        searchConfessions(e.target.value);
+    });
 });
 
 function fetchConfessions() {
@@ -58,7 +64,23 @@ function displayConfessions(confessions) {
             <h3>To: ${confession.toWhom}</h3>
             <p>${confession.confession}</p>
             <small>${confession.date}</small>
+            <button onclick="upvote(${confession.id})">❤️ ${confession.upvotes}</button>
         `;
         confessionsContainer.appendChild(card);
+    });
+}
+
+function upvote(id) {
+    fetch('/upvote', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id })
+    })
+    .then(response => response.text())
+    .then(result => {
+        console.log(result);
+        fetchConfessions(); // Refresh confessions list
     });
 }
